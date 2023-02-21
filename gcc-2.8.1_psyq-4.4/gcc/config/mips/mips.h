@@ -367,7 +367,11 @@ extern void		text_section ();
 /* This is true if we must enable the assembly language file switching
    code.  */
 
+/* GIL : This is an unpleasant way of enabling target file switching. */
+/*
 #define TARGET_FILE_SWITCHING	(TARGET_GP_OPT && ! TARGET_GAS)
+*/
+#define TARGET_FILE_SWITCHING   (TARGET_GP_OPT && TARGET_GAS)
 
 /* We must disable the function end stabs when doing the file switching trick,
    because the Lscope stabs end up in the wrong place, making it impossible
@@ -1255,7 +1259,12 @@ do {							\
 #define POINTER_BOUNDARY (TARGET_LONG64 ? 64 : 32)
 
 /* Allocation boundary (in *bits*) for storing arguments in argument list.  */
+/* GIL - Grim hack for N64 with -mgp64 - experimental for Richard Frankish */
+/* DAVE - this code was already in here.  why is limiting Allocation Boundary to 32 bits grim?
+/*
 #define PARM_BOUNDARY (TARGET_64BIT ? 64 : 32)
+*/
+#define PARM_BOUNDARY 32
 
 /* Allocation boundary (in *bits*) for the code of a function.  */
 #define FUNCTION_BOUNDARY 32
