@@ -367,11 +367,7 @@ extern void		text_section ();
 /* This is true if we must enable the assembly language file switching
    code.  */
 
-/* GIL : This is an unpleasant way of enabling target file switching. */
-/*
 #define TARGET_FILE_SWITCHING	(TARGET_GP_OPT && ! TARGET_GAS)
-*/
-#define TARGET_FILE_SWITCHING   (TARGET_GP_OPT && TARGET_GAS)
 
 /* We must disable the function end stabs when doing the file switching trick,
    because the Lscope stabs end up in the wrong place, making it impossible

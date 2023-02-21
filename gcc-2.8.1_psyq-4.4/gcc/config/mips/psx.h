@@ -109,3 +109,9 @@ do {								\
 #define DEFAULT_SIGNED_CHAR 0
 
 #include "mips/mips.h"
+
+/* Force target file switching for this target.
+   Enabling this puts all externs at the beginning of
+   the generated .asm files. */
+#undef TARGET_FILE_SWITCHING
+#define TARGET_FILE_SWITCHING (1)
