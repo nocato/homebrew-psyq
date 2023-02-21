@@ -52,7 +52,7 @@ Boston, MA 02111-1307, USA.  */
    NULL_TREE.  Some target formats do not support arbitrary sections.  Do not
    define this macro in such cases.  */
 
-#define ASM_OUTPUT_SECTION_NAME(F, DECL, NAME) \
+#define ASM_OUTPUT_SECTION_NAME(F, DECL, NAME, RELOC) \
 do {								\
   extern FILE *asm_out_text_file;				\
   if ((DECL) && TREE_CODE (DECL) == FUNCTION_DECL)		\
