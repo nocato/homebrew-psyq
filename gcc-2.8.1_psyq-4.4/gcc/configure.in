@@ -1730,6 +1730,25 @@ for machine in $build $host $target; do
 			use_collect2=yes
 		fi
 		;;
+	mips-psx*)			# PlayStation 1, based on mips-sgi target above.
+		tm_file=mips/psx.h
+		if [[ x$stabs = xyes ]]; then
+			tm_file="${tm_file} dbx.h"
+		fi
+		xm_file=mips/xm-psx.h
+		broken_install=yes
+		xmake_file=mips/x-psx
+		if [[ x$gas = xyes ]]
+		then
+			tmake_file=mips/t-mips-gas
+		else
+			extra_passes="mips-tfile mips-tdump"
+		fi
+		if [[ x$gnu_ld != xyes ]]
+		then
+			use_collect2=yes
+		fi
+		;;
 	mips-dec-osfrose*)		# Decstation running OSF/1 reference port with OSF/rose.
 		tm_file=mips/osfrose.h
 		xmake_file=mips/x-osfrose
