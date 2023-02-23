@@ -7,10 +7,12 @@ Homebrew Psy-Q is a project to compile a Linux build of GCC (CC1PSX.EXE) from [P
 
 The GCC code was imported from the [GCC git repository](https://github.com/gcc-mirror/gcc) and a minimal set of patches from the source tarball and PsyQ 4.4 GCC fork was applied.
 
+### New features
+- *DOS line endings.* The compiler emits the assembler code with DOS line endings (CRLF). This behavior can be disabled with `-fno-dos-line-endings` flag (or explicitly enabled with `-fdos-line-endings` flag).
+
 ## To do
 - Make it possible to build the project natively on a modern system without a "old school" Debian Docker container (see [Building](#building)).
 - Automated CI testing of [mgs_reversing](https://github.com/FoxdieTeam/mgs_reversing) compatiblity.
-- Add ability to generate files with Windows file endings. The assembler from PsyQ requires this (a workaround is to run unix2dos on the resulting file).
 - Additional debug logging around register allocation, different passes of the compiler (for the purposes of matching decompilation projects, such as [mgs_reversing](https://github.com/FoxdieTeam/mgs_reversing)).
 - PsyQ 4.3, 4.0 (or other?).
 - Some kind of replacement for PsyQ's assembler? (their assembler is not based on GNU as)

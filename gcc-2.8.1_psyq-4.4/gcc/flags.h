@@ -408,3 +408,7 @@ extern int flag_prefix_function_name;
 /* Nonzero if the current function is a thunk, so we should try to cut
    corners where we can.  */
 extern int current_function_is_thunk;
+
+/* Nonzero causes the compiler to emit the assembler code
+   with DOS line endings instead of UNIX line endings.  */
+extern int flag_dos_line_endings;

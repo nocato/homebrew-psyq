@@ -634,6 +634,10 @@ int flag_check_memory_usage = 0;
    -fcheck-memory-usage.  */
 int flag_prefix_function_name = 0;
 
+/* -fdos-line-endings causes the compiler to emit the assembler code
+   with DOS line endings instead of UNIX line endings.  */
+int flag_dos_line_endings = 1;
+
 /* Table of language-independent -f options.
    STRING is the option name.  VARIABLE is the address of the variable.
    ON_VALUE is the value to store in VARIABLE
@@ -691,7 +695,8 @@ struct { char *string; int *variable; int on_value;} f_options[] =
   {"stack-check", &flag_stack_check, 1},
   {"bytecode", &output_bytecode, 1},
   {"check-memory-usage", &flag_check_memory_usage, 1},
-  {"prefix-function-name", &flag_prefix_function_name, 1}
+  {"prefix-function-name", &flag_prefix_function_name, 1},
+  {"dos-line-endings", &flag_dos_line_endings, 1}
 };
 
 /* Table of language-specific options.  */
@@ -2317,6 +2322,8 @@ compile_file (name)
 	pfatal_with_name (asm_file_name);
     }
 
+  init_unix2dos ();
+
 #ifdef IO_BUFFER_SIZE
   setvbuf (asm_out_file, (char *) xmalloc (IO_BUFFER_SIZE),
 	   _IOFBF, IO_BUFFER_SIZE);
@@ -2817,6 +2824,9 @@ compile_file (name)
 #else
   fclose (finput);
 #endif
+
+  finish_unix2dos ();
+
   if (ferror (asm_out_file) != 0 || fclose (asm_out_file) != 0)
     fatal_io_error (asm_file_name);
 
