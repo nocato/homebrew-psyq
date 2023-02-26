@@ -3,7 +3,10 @@ all: psyq-4.4-old-school
 psyq-4.4-old-school:
 	./build-scripts/run-debian-slink-build-in-docker.sh
 
-.PHONY: clean
+psyq-4.4-old-school-package:
+	./build-scripts/package-old-school.sh
+
+.PHONY: all clean psyq-4.4-old-school psyq-4.4-old-school-package
 
 clean:
 	rm -rf build
