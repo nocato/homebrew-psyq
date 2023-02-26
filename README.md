@@ -9,7 +9,6 @@ The GCC code was imported from the [GCC git repository](https://github.com/gcc-m
 
 ## To do
 - Make it possible to build the project natively on a modern system without a "old school" Debian Docker container (see [Building](#building)).
-- Automated CI build.
 - Automated CI testing of [mgs_reversing](https://github.com/FoxdieTeam/mgs_reversing) compatiblity.
 - Add ability to generate files with Windows file endings. The assembler from PsyQ requires this (a workaround is to run unix2dos on the resulting file).
 - Additional debug logging around register allocation, different passes of the compiler (for the purposes of matching decompilation projects, such as [mgs_reversing](https://github.com/FoxdieTeam/mgs_reversing)).

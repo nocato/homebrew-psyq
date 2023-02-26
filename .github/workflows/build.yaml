@@ -1,0 +1,19 @@
+name: Build
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Build
+        run: |
+          make psyq-4.4-old-school
+      - name: Package
+        run: |
+          make psyq-4.4-old-school-package
+      - name: Upload generated package
+        uses: actions/upload-artifact@v3
+        with:
+          name: generated-packages
+          path: build/homebrew-psyq*.tar.gz
