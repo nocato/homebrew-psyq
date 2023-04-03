@@ -6,6 +6,9 @@ psyq-4.4-old-school:
 psyq-4.4-old-school-package:
 	./build-scripts/package-old-school.sh
 
+psyq-4.4-old-school-test:
+	./build-scripts/test-old-school.sh
+
 .PHONY: all clean psyq-4.4-old-school psyq-4.4-old-school-package
 
 clean:

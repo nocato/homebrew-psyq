@@ -17,3 +17,26 @@ jobs:
         with:
           name: generated-packages
           path: build/homebrew-psyq*.tar.gz
+  test-old-school:
+    runs-on: ubuntu-22.04
+    needs: build
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Download generated packages
+        uses: actions/download-artifact@v3
+        with:
+          name: generated-packages
+          path: build
+      - name: Install dependencies
+        run: |
+          sudo dpkg --add-architecture i386
+          sudo apt-get update
+          sudo apt-get install -y wine32 wine64 cpp
+      - name: Test
+        run: |
+          # Original Psy-Q can be very sensitive to
+          # path lengths, so do everything in /tmp
+          cp -R . /tmp
+          cd /tmp
+          make psyq-4.4-old-school-test
